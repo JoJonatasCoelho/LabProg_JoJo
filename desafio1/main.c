@@ -1,11 +1,30 @@
 #include <stdio.h>
+#include <math.h>
+#include <time.h>
 
-int escolha(void);
-int libera(void);
+unsigned char escolha(unsigned char armarios, unsigned char pos){
+    unsigned char mask = 0x01;
+
+    mask <<= (pos-1);
+    armarios = armarios | mask;
+
+    printf("%hhu\n", armarios);
+
+    return armarios;
+}
+unsigned char libera(unsigned char armarios, unsigned char pos){
+    unsigned char mask = 0x01;
+
+    armarios = armarios & ~(mask << (pos - 1));
+
+    printf("%d \n", armarios);
+    return armarios;
+}
 
 int main(int argc, char *argv[]){
-    unsigned char armarios;
+    unsigned char armarios = 0x00;
     unsigned char input = 0;
+    unsigned char pos;
 
     do {
         puts("Escolha a opçao: ");
@@ -13,13 +32,17 @@ int main(int argc, char *argv[]){
         puts("[2]Liberar armario");
         puts("[3]Sair");
         scanf("%hhu", &input);
-    
+
         switch (input) {
             case 1:
-                escolha();
+                scanf(" %hhu", &pos);
+                armarios = escolha(armarios, pos);
+
                 break;
             case 2:
-                libera();
+                scanf(" %hhu", &pos);
+                armarios = libera(armarios, pos);
+
                 break;
             case 3:
                 break;
@@ -29,6 +52,6 @@ int main(int argc, char *argv[]){
     } while (input != 3);
 
 
-  return 0;    
+  return 0;
 }
 
