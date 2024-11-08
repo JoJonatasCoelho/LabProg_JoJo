@@ -1,25 +1,43 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
 #include <time.h>
 
-unsigned char escolha(unsigned char armarios, unsigned char pos){
-    unsigned char mask = 0x01;
+unsigned char escolha(unsigned char armarios){
+    unsigned char old = armarios;
+    unsigned char pos;
 
-    mask <<= (pos-1);
-    armarios = armarios | mask;
+    srand(time(NULL));
+    do{
+        unsigned char mask = 0x01;
+       
+        pos = 1 + rand() % 8;
 
-    printf("%hhu\n", armarios);
+        mask <<= (pos-1);
+        armarios = armarios | mask;
+
+    if (armarios >= 255) {
+        break;  
+    } else {
+        continue;  
+}
+
+    }while(armarios == old);
+
+    printf("%hhu\n", armarios); // será substituido por uma lógica dde imprimir string binária
 
     return armarios;
 }
+
+
 unsigned char libera(unsigned char armarios, unsigned char pos){
     unsigned char mask = 0x01;
 
     armarios = armarios & ~(mask << (pos - 1));
 
-    printf("%d \n", armarios);
-    return armarios;
+    printf("%d \n", armarios);// será substituido por uma lógica dde imprimir string binária
+    return armarios; 
 }
+
 
 int main(int argc, char *argv[]){
     unsigned char armarios = 0x00;
@@ -35,8 +53,7 @@ int main(int argc, char *argv[]){
 
         switch (input) {
             case 1:
-                scanf(" %hhu", &pos);
-                armarios = escolha(armarios, pos);
+                armarios = escolha(armarios);
 
                 break;
             case 2:
@@ -50,7 +67,6 @@ int main(int argc, char *argv[]){
                 puts("Opção inválida");
         }
     } while (input != 3);
-
 
   return 0;
 }
