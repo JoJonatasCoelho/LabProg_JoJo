@@ -62,9 +62,11 @@ int main(void){
         puts("[3]Sair");
         puts("[0]Visualizar armarios");
 
-        while (getchar() != '\n');
-        scanf(" %hhu", &input);
-
+        if (scanf(" %hhu", &input) != 1) {
+            puts("Entrada inválida! Digite um número entre 0 e 3.");
+            while (getchar() != '\n');
+            continue;
+        }
 
         switch (input) {
 
