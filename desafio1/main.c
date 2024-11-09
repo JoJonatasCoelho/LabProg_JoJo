@@ -60,22 +60,30 @@ int main(void){
         puts("[1]Ocupar armario");
         puts("[2]Liberar armario");
         puts("[3]Sair");
-        scanf("%hhu", &input);
+        puts("[0]Visualizar armarios");
+
+        while (getchar() != '\n');
+        scanf(" %hhu", &input);
+
 
         switch (input) {
+
+            case 0:
+                imprimir_bin(armarios);
+                printf("%hhu", input);
+                break;
+
             case 1:
                 armarios = escolha(armarios);
-
                 break;
+
             case 2:
+                puts("Digite numero do armário que deseja desocupar");
                 scanf(" %hhu", &pos);
                 armarios = libera(armarios, pos);
+                break;
 
-                break;
-            case 3:
-                break;
             default:
-                imprimir_bin(armarios);
                 break;
         }
     } while (input != 3);
