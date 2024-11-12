@@ -5,8 +5,24 @@
 // um programa que receba o valor da mercadoria e forne ̧ca o valor da entrada e das duas presta ̧c ̃oes, de
 // acordo com as regras acima.
 
-int main(void)
-{
+#include <math.h>
+#include <stdio.h>
+int main(void){
+
+    float valor = 0, entrada = 0, parcela = 0;
+
+    puts("Digite o valor do produto: ");
+    scanf("%f", &valor);
+
+    printf("%f \n", floor(valor));
+
+    parcela = floor(valor / 2);
+    entrada = valor - parcela;
+
+    printf("A entrada foi: R$%0.2f\n", entrada);
+    printf("A parcela ficou: R$%d\n", (int)parcela/2 );
+
+
 
     return 0;
 }
