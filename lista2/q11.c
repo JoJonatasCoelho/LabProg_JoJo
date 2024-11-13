@@ -16,7 +16,6 @@ int main(void){
     }
 
     for(short int i = a; i <= b; i++){
-        //printf("do bagulho %d %d", i, i/4);
         (i % 4)? puts("") : printf("o número %d é o quadrado\n", i*i);
     }
     return 0;
