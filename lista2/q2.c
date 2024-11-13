@@ -1,16 +1,11 @@
 #include <stdio.h>
 
-// Implemente um programa que tenha como entrada um n ́umero (1-7) que corresponde a um dos dias
-// da semana e imprima na tela o nome do dia correspondente (domingo, segunda, ter ̧ca, quarta, quinta,
-// sexta, s ́abado). Se o n ́umero lido n ̃ao estiver no intervalo 1-7, imprima: “N ́umero de dia n ̃ao v ́alido”. O
-// programa deve permanecer executando at ́e que o usu ́ario tecle o numero 0. (Utilize obrigatoriamente
-// teste no in ́ıcio).
 
 void quest1()
 {
-    unsigned char dia = 1;
+    unsigned char dia;
 
-    while(dia != 0) {
+    do {
         puts("Digite o dia da semana: ");
         scanf(" %hhu", &dia);
 
@@ -48,9 +43,8 @@ void quest1()
                 break;
     }
 
-    }
+    }while(dia != 0);
     puts("Desligando programa por ter apertado 0");
 
 }
-
 
