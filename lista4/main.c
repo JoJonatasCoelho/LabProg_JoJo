@@ -21,38 +21,29 @@ int main(int argc, char *argv[])
     }
 
 
+    unsigned char chunk[8];
 
     for (int linha = 0; linha < ALT ; linha++) {
 
         for (int largura; largura < LARG; largura++) {
-                if (((linha != 0) && linha != 1080) && ((largura != 0) && (largura != 1920)))  {
-                    img[linha-1][largura-1] = (img[linha][largura] < img[linha-1][largura-1]) ? 1 : 0;
-                    img[linha-1][largura] = (img[linha][largura] < img[linha-1][largura]) ? 1 : 0;
-                    img[linha-1][largura+1] = (img[linha][largura] < img[linha-1][largura+1]) ? 1 : 0;
-
-                    img[linha-1][largura-1] = (img[linha][largura] < img[linha-1][largura-1]) ? 1 : 0;
-                    img[linha-1][largura] = (img[linha][largura] < img[linha-1][largura]) ? 1 : 0;
-                    img[linha-1][largura+1] = (img[linha][largura] < img[linha-1][largura+1]) ? 1 : 0;
-                    img[linha][largura-1] = (img[linha][largura] < img[linha][largura-1]) ? 1 : 0;
-                    img[linha][largura+1] = (img[linha][largura] < img[linha][largura+1]) ? 1 : 0;
-                    img[linha+1][largura-1] = (img[linha][largura] < img[linha+1][largura-1]) ? 1 : 0;
-                    img[linha+1][largura] = (img[linha][largura] < img[linha+1][largura]) ? 1 : 0;
-                    img[linha+1][largura+1] = (img[linha][largura] < img[linha+1][largura+1]) ? 1 : 0;
 
 
-                }
+            chunk[0] = (img[linha][largura] < img[linha-1][largura-1]) ? 1 : 0;
+            chunk[1] = (img[linha][largura] < img[linha-1][largura]) ? 1 : 0;
+            chunk[2] = (img[linha][largura] < img[linha-1][largura+1]) ? 1 : 0;
+            chunk[3] = (img[linha][largura] < img[linha][largura-1]) ? 1 : 0;
+            chunk[4] = (img[linha][largura] < img[linha][largura+1]) ? 1 : 0;
+            chunk[5] = (img[linha][largura] < img[linha+1][largura-1]) ? 1 : 0;
+            chunk[6] = (img[linha][largura] < img[linha+1][largura]) ? 1 : 0;
+            chunk[7] = (img[linha][largura] < img[linha+1][largura+1]) ? 1 : 0;
+
+            for (int i = 0; i < 8; i++) {
+                printf("%hhu", chunk[i]);
+
+            }
+            puts("\n");
         }
     }
-    for (int linha = 0; linha < ALT ; linha++) {
-
-        for (int largura; largura < LARG; largura++) {
-            printf(" %hhu ", img[linha][largura]);
-        }
-
-    }
-
-
-
 
     return 0;
 }
