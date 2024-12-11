@@ -28,6 +28,14 @@ int main(int argc, char *argv[])
 
         for (int largura = 0; largura < LARG; largura++) {
 
+            puts("\nMatriz:");
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    printf(" %3hhu ", img[linha-1 + i][largura - 1 + j]);
+                }
+                puts("\n");
+            }
+
             printf("O valor do pixel era: %hhu\n", img[linha][largura]);
 
             if (linha != 0) {
@@ -86,7 +94,6 @@ int main(int argc, char *argv[])
 
             for(int bit = 0; bit < 8; bit++){
                 out[linha][largura] += (chunk[bit] == 1) ? 0x1 << bit: 0;
-                printf("n%d = %hhu\n", bit, (chunk[bit] == 1) ? 0x1 << bit: 0);
             }
 
             printf("pixel_final[%d][%d]: %hhu\n", linha, largura, out[linha][largura]);
