@@ -2,8 +2,8 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define ALT 10
-#define LARG 10
+#define ALT 1080
+#define LARG 1920
 #define MAX 250
 
 int main(int argc, char *argv[])
