@@ -46,11 +46,12 @@ int main(int argc, char *argv[])
     for (int elemento = 0; elemento < n; elemento++) {
         // *(img + elemento);
         puts("\nMatriz:");
-        for (int k = elemento; k < MATRIZ * largura; k++)
+                                    // o ultimo erro tá aqui
+        for (int k = elemento; k < MATRIZ * largura + elemento; k++)
         {
-            printf("[%d] %3hhu ", k, *(img + k - largura - 1));
+            printf("[%d] %3hhu ", k, *(img - largura + k -1));
 
-            if(!((k + 1) % MATRIZ)){
+            if((k == elemento + MATRIZ -1) || (k == elemento + MATRIZ + largura - 1) || (k == elemento + MATRIZ + 2 * largura -1)){
                 k += largura-MATRIZ;
                 puts("\n");
             }
