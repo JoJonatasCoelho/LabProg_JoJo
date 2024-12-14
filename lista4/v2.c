@@ -7,6 +7,7 @@
 #define MAX 255
 
 void desenhar_bitmap(unsigned char *v, int alt, int larg){
+    puts("\nMatriz: \n");
     for (int k = 0; k < alt*larg ; k++) {
         printf(" %3hhu ", *(v + k));
         if (!((k+1) % larg)) printf("\n");
@@ -45,7 +46,7 @@ int main(int argc, char *argv[])
 
     for (int elemento = 0; elemento < n; elemento++) {
         // *(img + elemento);
-        puts("\nMatriz:");
+        puts("\nChunk:");
                                     // o ultimo erro tá aqui
         for (int k = elemento; k < MATRIZ * largura + elemento; k++)
         {
@@ -141,6 +142,8 @@ int main(int argc, char *argv[])
 
     // desenhar_bitmap(out, ALT, LARG);
 
+    free(img);
+    free(out);
     return 0;
 }
 
